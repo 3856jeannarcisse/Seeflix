@@ -10,7 +10,7 @@ return(
     heroTagline="We are here to help!!"
     heroButtonLink="Get in touch"
     showSocials={true}
-    
+    background="/assets/Contactback1.jpg"
     
 />
     

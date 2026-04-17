@@ -1,91 +1,78 @@
-.about {
-  font-family: 'Arial', sans-serif;
-  color: #f0f0f0;
-  background-color: #0d0d0d;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 80px 20px;
-  min-height: 100vh; 
-  gap: 60px;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Poppins:wght@300;400;500&display=swap');
+
+.about-page {
+  background: #0a0a0a; 
+  color: #fff;
+  min-height: 100vh;
 }
 
+.about {
+  padding: 5rem 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.about-intro,
+.about-mission,
+.about-contact {
+  background: rgba(20, 20, 20, 0.6); 
+  backdrop-filter: blur(12px); 
+  border: 1px solid rgba(255, 255, 255, 0.05); 
+  border-radius: 20px;
+  padding: 3rem;
+  margin-bottom: 2rem;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease;
+  animation: slideInUp 0.8s ease-out backwards;
+}
+.about-intro { animation-delay: 0.1s; }
+.about-mission { animation-delay: 0.3s; }
+.about-contact { animation-delay: 0.5s; }
 
-.about-intro {
-  background: linear-gradient(135deg, #1c1c1c, #2a2a2a);
-  padding: 50px 40px;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-  text-align: center;
-
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 1s forwards;
+.about-intro h1,
+.about-mission h2,
+.about-contact h2 {
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 0;
+  color: #e50914;
+  font-weight: 800;
+  letter-spacing: -1px;
 }
 
 .about-intro h1 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #ff4c4c;
+  font-size: 2.8rem;
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
-.about-intro p {
-  font-size: 1.2rem;
+.about-intro p,
+.about-mission p,
+.about-contact p {
+  font-family: 'Poppins', sans-serif;
   line-height: 1.8;
-  color: #ddd;
+  color: #b3b3b3; 
+  font-size: 1.1rem;
 }
 
 
-.about-mission {
-  background: linear-gradient(145deg, #111, #222);
-  padding: 50px 40px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 1s forwards;
-  animation-delay: 0.3s;
+.about-intro:hover,
+.about-mission:hover,
+.about-contact:hover {
+  transform: translateY(-8px);
+  border-color: rgba(229, 9, 20, 0.4);
+  background: rgba(30, 30, 30, 0.8);
 }
 
-.about-mission h2 {
-  font-size: 2rem;
-  margin-bottom: 15px;
-  color: #ff8c00;
-}
-
-.about-mission p {
-  font-size: 1.2rem;
-  line-height: 1.8;
-  color: #ccc;
-}
-@keyframes fadeInUp {
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-
 @media (max-width: 768px) {
-  .about {
-    padding: 50px 15px;
-    gap: 40px;
-  }
-
-  .about-intro, .about-mission {
-    padding: 30px 20px;
-  }
-
-  .about-intro h1 {
-    font-size: 2rem;
-  }
-
-  .about-mission h2 {
-    font-size: 1.6rem;
-  }
-
-  .about-intro p, .about-mission p {
-    font-size: 1rem;
-  }
+  .about-intro h1 { font-size: 2rem; }
+  .about-intro, .about-mission, .about-contact { padding: 2rem; }
 }

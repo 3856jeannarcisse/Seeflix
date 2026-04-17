@@ -1,4 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;500;600&display=swap');
+
+/* Media Card Styling */
 .media-card {
-  background: #1a1a1a;
-  border-radius: 12px;
+  background: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.35);
+}
+
+.media-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(229, 9, 20, 0.45);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.45);
+}
+
+.media-card-image {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.media-card:hover .media-card-image {
+  transform: scale(1.05);
+}
+
+.media-card-title {
+  margin: 0;
+  padding: 16px 18px 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: #111;
+  line-height: 1.4;
+}
+
+.media-card-date {
+  margin: 0;
+  padding: 0 18px 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: #b3b3b3;
+  background: #111;
+}
+
+.media-card-overview {
+  margin: 0;
+  padding: 0 18px 18px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: #ddd;
+  background: #111;
+  line-height: 1.6;
+  max-height: 7.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 900px) {
+  .media-card-image {
+    height: 220px;
+  }
+}
+
+@media (max-width: 600px) {
+  .media-card-image {
+    height: 200px;
+  }
 }

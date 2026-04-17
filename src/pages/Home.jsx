@@ -1,35 +1,77 @@
+import { useEffect, useState } from "react";
 import Header from "../Component/Header";
-import MediaList from "./Medialiste";
-import Footer from"../Component/Footer";
-import { trending_movies } from "../data/trending_movies";
-import { top_shows } from "../data/top_shows";
+import Footer from "../Component/Footer";
+import { getPopularMovies } from "../Api/Tmdb";
+import MediaCard from "./Mediacard";
+import "./Home.css";
 
 function Home() {
-  return (<>
-    <div>
-      <Header
-      heroTitle="Welcome to our Tize Movies Platform"
-      heroTagline="Stream the best moves anytime,anywhere"
-      heroButtonLink="Get Started"
-      showSocials={true}
-      background="https://i.pinimg.com/736x/3c/a9/47/3ca947f7c1e4b9f68c8a7e0653b918be.jpg"
-      
-      />
+  const [movies, setMovies] = useState([]);
+  const [filteredMovies, setFilteredMovies] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
-      <MediaList
-        title="Trending Movies"
-        items={trending_movies}
-      />
+  useEffect(() => {
+    getPopularMovies().then((data) => {
+      const popular = data.slice(0, 8); 
+      setMovies(popular);
+      setFilteredMovies(popular);
+    });
+  }, []);
 
-      <MediaList
-        title="Top TV Shows"
-        items={top_shows}
-      />
-    </div>
-    <Footer/>
+  const handleSearch = () => {
+    const query = searchTerm.trim().toLowerCase();
+    if (!query) {
+      setFilteredMovies(movies);
+      return;
+    }
+
+    setFilteredMovies(
+      movies.filter((movie) =>
+        movie.title?.toLowerCase().includes(query)
+      )
+    );
+  };
+
+  return (
+    <>
+      <div className="home-page">
+        <Header
+          heroTitle="Welcome to our Tize Movies Platform"
+          heroTagline="Stream the best movies anytime, anywhere"
+          heroButtonText="Explore Movies"
+          heroButtonLink="/media"
+          showSocials={true}
+          background="https://i.pinimg.com/736x/3c/a9/47/3ca947f7c1e4b9f68c8a7e0653b918be.jpg"
+        />
+
+        <div className="home-search">
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search movies in this list..."
+          />
+          <button type="button" onClick={handleSearch}>
+            Search
+          </button>
+        </div>
+
+        <h2 id="popular-movies">Popular Movies</h2>
+
+        <div className="movies-grid">
+          {filteredMovies.length > 0 ? (
+            filteredMovies.map((movie) => (
+              <MediaCard key={movie.id} movie={movie} />
+            ))
+          ) : (
+            <p className="no-results">No movies found. Try another search.</p>
+          )}
+        </div>
+      </div>
+
+      <Footer />
     </>
   );
 }
 
 export default Home;
-

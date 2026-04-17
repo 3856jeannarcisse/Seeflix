@@ -1,8 +1,7 @@
-
 import MediaCard from "./Mediacard";
-import "../index.css";
 
-function MediaList({ title, items }) {
+
+function MediaList({ title, items = [] }) {
 
   return (
     <section>
@@ -11,12 +10,7 @@ function MediaList({ title, items }) {
 
       <div className="media-1">
         {items.map((item) => (
-          <MediaCard
-            key={item.id}
-            title={item.title}
-            cover={item.cover}
-            rating={item.rating}
-          />
+          <MediaCard key={item.id} movie={item} />
         ))}
       </div>
 

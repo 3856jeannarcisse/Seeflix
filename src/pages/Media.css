@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Poppins:wght@300;400;500;600&display=swap');
+
+.media-page {
+  background: #0a0a0a; 
+  color: white;
+  padding: 60px 6%; 
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+}
+
+.media-page section {
+  width: 100%;
+}
+
+.media-1 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 30px; 
+  width: 100%;
+  margin-top: 30px;
+  animation: fadeUp 1.2s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+}
+
+.media-1 .media-card {
+  width: 100%;
+}
+
+.media-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; 
+  margin-bottom: 50px;
+  animation: fadeUp 1s ease-out forwards;
+}
+
+.media-subtitle {
+  font-family: 'Poppins', sans-serif;
+  color: #e50914; 
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.media-topbar h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+/* ===== FILTER BUTTONS ===== */
+.filters {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filters button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.06);
+  color: #eee;
+  transition: all 0.25s ease;
+}
+
+.media-search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+  padding: 0 6%;
+}
+
+.media-search select,
+.media-search input {
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #eee;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+}
+
+.media-search select {
+  min-width: 160px;
+}
+
+.media-search input {
+  flex: 1;
+  min-width: 220px;
+}
+
+.media-search button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  background: #e50914;
+  color: white;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.media-search button:hover {
+  background: #ff1414;
+  transform: translateY(-1px);
+}
+
+/* Hover: White focus */
+.filters button:hover {
+  background: #fff;
+  color: #000;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Active State: Seeflix Red */
+.filters .active {
+  background: #e50914;
+  color: white;
+  border-color: #e50914;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3);
+}
+
+/* ===== MOVIE LIST TITLE ===== */
+.media-page h2 {
+  font-family: 'Montserrat', sans-serif;
+  margin: 40px 0 20px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive for Tablet/Mobile */
+@media (max-width: 900px) {
+  .media-topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 25px;
+  }
+  
+  .filters {
+    width: 100%;
+    overflow-x: auto; /* Allow scrolling filters on mobile */
+    padding-bottom: 10px;
+  }
+  
+  .media-page {
+    padding: 40px 20px;
+  }
+}
